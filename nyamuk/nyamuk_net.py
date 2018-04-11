@@ -40,7 +40,7 @@ def read(sock, count):
     try:
         data = sock.recv(count)
     except ssl.SSLError as e:
-        return data, e.errno, e.strerror if strerror else e.message
+        return data, e.errno, e.strerror if e.strerror else e.message
     except socket.herror as (errnum, errmsg):
         return data, errnum, errmsg
     except socket.gaierror as (errnum, errmsg):
